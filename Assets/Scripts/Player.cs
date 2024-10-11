@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    Rigidbody rigidbody;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        public float movementSpeed = 10f;
+
+        rigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -21,5 +25,9 @@ public class Player : MonoBehaviour
 
         var rotation = Quaternion.LookRotation(new Vector3(horziontalInput, 0, verticalInput));
         transform.rotation = rotation;
+
+        Vector3 movementDir = transform.forward * Time.deltaTime;
+        rigidBody.MovePosition(rigidbody.position + movementDir);
+
     }
 }

@@ -6176,7 +6176,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 73.7
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -6203,8 +6203,8 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.3, y: 20.3, z: -105.4}
+  m_LocalScale: {x: 20, y: 20, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -8570,27 +8570,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -4216859302048453862, guid: 824f65caa8a9cc94fada9a5bdd891cda, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 824f65caa8a9cc94fada9a5bdd891cda, type: 3}
       propertyPath: m_LocalScale.y
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 824f65caa8a9cc94fada9a5bdd891cda, type: 3}
       propertyPath: m_LocalScale.z
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 824f65caa8a9cc94fada9a5bdd891cda, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.7037299
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 824f65caa8a9cc94fada9a5bdd891cda, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.0420303
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 824f65caa8a9cc94fada9a5bdd891cda, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.4604187
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 824f65caa8a9cc94fada9a5bdd891cda, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8624,6 +8624,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: rhino
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 824f65caa8a9cc94fada9a5bdd891cda, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 824f65caa8a9cc94fada9a5bdd891cda, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8631,6 +8639,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: 824f65caa8a9cc94fada9a5bdd891cda, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1590153302}
+    - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: 824f65caa8a9cc94fada9a5bdd891cda, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1590153306}
+    - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: 824f65caa8a9cc94fada9a5bdd891cda, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1590153305}
   m_SourcePrefab: {fileID: 100100000, guid: 824f65caa8a9cc94fada9a5bdd891cda, type: 3}
 --- !u!4 &1590153300 stripped
 Transform:
@@ -8654,6 +8668,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a84876018c1f8c841a2a1af0de600cda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1590153305
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590153301}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.4622903, y: 1.4062535, z: 2.0897174}
+  m_Center: {x: 0.00090929866, y: 0.68452245, z: 0.0049257874}
+--- !u!54 &1590153306
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590153301}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1594579628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9891,6 +9953,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1928174724}
+  - component: {fileID: 1928174725}
   m_Layer: 0
   m_Name: Rhino
   m_TagString: Untagged
@@ -9914,6 +9977,18 @@ Transform:
   - {fileID: 1590153300}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1928174725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928174723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a84876018c1f8c841a2a1af0de600cda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1946029576
 PrefabInstance:
   m_ObjectHideFlags: 0
