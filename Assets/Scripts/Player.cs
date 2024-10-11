@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
         rigidbody = GetComponent<Rigidbody>();
     }
 
@@ -29,6 +29,6 @@ public class Player : MonoBehaviour
 
         Vector3 movementDir = transform.forward * Time.deltaTime;
         rigidBody.MovePosition(rigidbody.position + movementDir);
-
+        
     }
 }
