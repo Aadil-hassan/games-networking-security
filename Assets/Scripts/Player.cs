@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public float movementSpeed = 10f;
+
     Rigidbody rigidbody;
 
     // Start is called before the first frame update
