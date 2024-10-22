@@ -6,13 +6,13 @@ public class Player : MonoBehaviour
 {
     public float movementSpeed = 10f;
 
-    Rigidbody rigidbody;
+    Rigidbody rigidBody;
 
     // Start is called before the first frame update
     void Start()
     {
         
-        rigidbody = GetComponent<Rigidbody>();
+        rigidBody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -27,8 +27,8 @@ public class Player : MonoBehaviour
         var rotation = Quaternion.LookRotation(new Vector3(horziontalInput, 0, verticalInput));
         transform.rotation = rotation;
 
-        Vector3 movementDir = transform.forward * Time.deltaTime;
-        rigidBody.MovePosition(rigidbody.position + movementDir);
+        Vector3 movementDir = transform.forward * Time.deltaTime * movementSpeed;
+        rigidBody.MovePosition(rigidBody.position + movementDir);
         
     }
 }
