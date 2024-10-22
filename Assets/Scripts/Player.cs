@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public Transform bulletPosition;
     float nextfire;
 
+    public AudioClip playerShootingAudio;
     // Start is called before the first frame update
     void Start()
     {

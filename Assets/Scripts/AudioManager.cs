@@ -28,19 +28,11 @@ public class AudioManager : MonoBehaviour
         GameObject audioGameObject = Instantiate(AudioPrefab, position, Quaternion.identity);
         AudioSource source = audioGameObject.GetComponent<AudioSource>();
 
-        if (source != null)
-        {
-            // Assign the clip to the audio source and play the sound
-            source.clip = clip;
-            source.Play();
+        source.clip = clip;
+        source.Play();
 
-            // Automatically destroy the audio object after the clip finishes playing
-            Destroy(audioGameObject, clip.length);
-        }
-        else
-        {
-            Debug.LogWarning("AudioSource component missing from AudioPrefab!");
-        }
+        Destroy(audioGameObject, clip.length);
+        
     }
 }
 
