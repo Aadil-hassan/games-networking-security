@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
 
     public float firerate = 0.75f;
     public GameObject bulletPrefab;
+    public GameObject bulletFiringEffect;
     public Transform bulletPosition;
     float nextfire;
 
@@ -71,6 +72,10 @@ public class Player : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab, bulletPosition.position, Quaternion.identity);
 
             bullet.GetComponent<BulletController>()?.InitializeBullet(transform.rotation * Vector3.forward);
+            AudioManager.Instance.Play3D(playerShootingAudio, transform.position);
+
+            VFXManager.instance.PlayVFX(bulletFiringEffect, bulletPosition.position);
+
         }
     }
 }
