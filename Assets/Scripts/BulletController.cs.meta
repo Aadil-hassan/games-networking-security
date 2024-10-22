@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 7f2cc0aaac3e3ca4699ace25172d7abe
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - BulletHitAudio: {fileID: 8300000, guid: 55c030d3c6b3b674e9bdd7449446236c, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

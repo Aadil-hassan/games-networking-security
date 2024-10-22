@@ -7,7 +7,9 @@ public class BulletController : MonoBehaviour
 
     Rigidbody rigidBody;
 
-    public float bulletspeed = 15f; 
+    public float bulletspeed = 15f;
+
+    public AudioClip BulletHitAudio;
 
     public void InitializeBullet(Vector3 originalDirection)
     {
@@ -17,6 +19,8 @@ public class BulletController : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
+        AudioManager.Instance.Play3D(BulletHitAudio, transform.position);
+        
         Destroy(gameObject);
     }
     // Start is called before the first frame update
