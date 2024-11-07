@@ -10911,6 +10911,10 @@ PrefabInstance:
       propertyPath: BulletHitAudio
       value: 
       objectReference: {fileID: 8300000, guid: 55c030d3c6b3b674e9bdd7449446236c, type: 3}
+    - target: {fileID: 184049068700969363, guid: f54d0ef9ba358af47abd105341e285ec, type: 3}
+      propertyPath: bulletImpactEffect
+      value: 
+      objectReference: {fileID: 413672065}
     - target: {fileID: 3464968181367075393, guid: f54d0ef9ba358af47abd105341e285ec, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
