@@ -393,10 +393,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 0.75
-  bulletPrefab: {fileID: 0}
-  bulletFiringEffect: {fileID: 0}
-  bulletPosition: {fileID: 0}
-  playerShootingAudio: {fileID: 0}
+  bulletPrefab: {fileID: 3464968181367303777, guid: f54d0ef9ba358af47abd105341e285ec, type: 3}
+  bulletFiringEffect: {fileID: 1000011513120438, guid: f70d27f5cf28c8941bbfd6febd74797f, type: 3}
+  bulletPosition: {fileID: 965660809}
+  playerShootingAudio: {fileID: 8300000, guid: 9d685be7bcccd974bb6312c9965ff4e5, type: 3}
 --- !u!1001 &38392612
 PrefabInstance:
   m_ObjectHideFlags: 0
