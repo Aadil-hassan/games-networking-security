@@ -2440,6 +2440,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4281780448642680, guid: 0f9577b4dda6cc546abea4737be5a392, type: 3}
   m_PrefabInstance: {fileID: 364194020}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &364993252 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6812360275661751426, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+  m_PrefabInstance: {fileID: 1078888561}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &364993255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364993252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2204896b46b2bee48b098810ebbf6ac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LoginPanel: {fileID: 0}
+  SelectionPanel: {fileID: 0}
+  CreateRoomPanel: {fileID: 0}
+  InsideRoomPanel: {fileID: 0}
+  ListRoomsPanel: {fileID: 0}
 --- !u!1 &385920334
 GameObject:
   m_ObjectHideFlags: 0
@@ -5689,6 +5711,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4244113901689226, guid: 836ca07fc69b4184ca14265c7d24030d, type: 3}
   m_PrefabInstance: {fileID: 820887111}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &822855403 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6812360276549421480, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+  m_PrefabInstance: {fileID: 1078888561}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &822855404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822855403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2204896b46b2bee48b098810ebbf6ac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LoginPanel: {fileID: 0}
+  SelectionPanel: {fileID: 0}
+  CreateRoomPanel: {fileID: 0}
+  InsideRoomPanel: {fileID: 0}
+  ListRoomsPanel: {fileID: 0}
 --- !u!1001 &831783895
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6968,6 +7012,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6812360276434947485, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 822855404}
+    - target: {fileID: 6812360276434947485, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoginButtonClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 6812360276434947485, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MultiPlayerLobby, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6812360276434947486, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -7071,7 +7127,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6812360276549421480, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 822855404}
+    - targetCorrespondingSourceObject: {fileID: 6812360275661751426, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 364993255}
   m_SourcePrefab: {fileID: 100100000, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
 --- !u!1001 &1090377686
 PrefabInstance:
