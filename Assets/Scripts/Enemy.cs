@@ -5,9 +5,12 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField]
     public float fireRate = 0.75f;
+    [SerializeField]
     public GameObject bulletPrefab;
     public GameObject bulletFiringEffect;
+    [SerializeField]
     public Transform bulletPosition;
     private float nextFire;
     public AudioClip playerShootingAudio;
@@ -15,6 +18,9 @@ public class Enemy : MonoBehaviour
     [HideInInspector]
     public int health = 100;
     public Slider healthBar;
+
+    public delegate void EnemyKilled();
+    public static event EnemyKilled OnEnemyKilled;
 
     // This triggers when a collider stays within the trigger zone of the enemy
     private void OnTriggerStay(Collider other)
@@ -46,6 +52,7 @@ public class Enemy : MonoBehaviour
     void TakeDamage(int damage)
     {
         health -= damage;
+
         // Optionally update the health bar here
         if (healthBar != null)
         {
@@ -54,15 +61,18 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
-            Die(); // Handle death logic if health reaches 0
+            EnemyDied(); // Handle death logic if health reaches 0
         }
     }
 
     // Method to handle enemy death
-    void Die()
+    void EnemyDied()
     {
         // Handle death, e.g., play death animation, destroy the enemy, etc.
         Destroy(gameObject); // Destroy the enemy game object
+
+        // Trigger the enemy killed event if there are any listeners
+        OnEnemyKilled?.Invoke(); // This is equivalent to checking null and calling Invoke
     }
 
     // Method to handle firing bullets
@@ -114,6 +124,7 @@ public class Enemy : MonoBehaviour
         }
     }
 }
+
 
 
 
