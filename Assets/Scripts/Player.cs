@@ -5,28 +5,33 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float movementSpeed = 10f;
+    private Rigidbody rigidBody;
 
-    Rigidbody rigidBody;
-
-    public float firerate = 0.75f;
+    public float fireRate = 0.75f;
     public GameObject bulletPrefab;
     public GameObject bulletFiringEffect;
     public Transform bulletPosition;
-    float nextfire;
+    private float nextFireTime;
 
     public AudioClip playerShootingAudio;
-    // Start is called before the first frame update
+
+    // Initialize components
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
+        if (rigidBody == null)
+        {
+            Debug.LogError("Rigidbody component missing on Player!");
+        }
     }
 
-    // Update is called once per frame
+    // Handle firing in the Update loop
     void Update()
     {
-        // Handle firing in the Update loop
         if (Input.GetKey(KeyCode.Space))
+        {
             Fire();
+        }
     }
 
     // FixedUpdate is called for physics updates like movement
@@ -36,13 +41,13 @@ public class Player : MonoBehaviour
     }
 
     // Movement logic
-    void Move()
+    private void Move()
     {
         // Get player input for movement
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        // If there's no input, do not rotate or move
+        // If there's no input, skip movement and rotation
         if (horizontalInput == 0 && verticalInput == 0)
             return;
 
@@ -52,8 +57,8 @@ public class Player : MonoBehaviour
         // Smooth rotation towards movement direction
         if (movementDir != Vector3.zero)
         {
-            Quaternion toRotation = Quaternion.LookRotation(movementDir, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 720 * Time.deltaTime);  // Smooth rotation
+            Quaternion targetRotation = Quaternion.LookRotation(movementDir, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 720 * Time.deltaTime);
         }
 
         // Move the player based on input
@@ -61,12 +66,12 @@ public class Player : MonoBehaviour
     }
 
     // Firing logic
-    void Fire()
+    private void Fire()
     {
-        // Ensures firing happens only after the specified firerate interval
-        if (Time.time > nextfire)
+        // Ensures firing happens only after the specified fireRate interval
+        if (Time.time > nextFireTime)
         {
-            nextfire = Time.time + firerate;
+            nextFireTime = Time.time + fireRate;
 
             // Instantiate bullet at the defined position with no rotation
             GameObject bullet = Instantiate(bulletPrefab, bulletPosition.position, Quaternion.identity);
@@ -74,8 +79,8 @@ public class Player : MonoBehaviour
             bullet.GetComponent<BulletController>()?.InitializeBullet(transform.rotation * Vector3.forward);
             AudioManager.Instance.Play3D(playerShootingAudio, transform.position);
 
-            VFXManager.instance.PlayVFX(bulletFiringEffect, bulletPosition.position);
-
+            VFXManager.Instance.PlayVFX(bulletFiringEffect, bulletPosition.position);
         }
     }
 }
+

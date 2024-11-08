@@ -4,35 +4,34 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public GameObject AudioPrefab;
-    public static AudioManager Instance;
+    public static AudioManager Instance;  // Singleton pattern for easy access
+    public GameObject AudioPrefab;  // AudioPrefab for instantiating audio
 
     private void Awake()
     {
-        // Implementing Singleton Pattern
+        // Singleton pattern implementation
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);  // Persist the AudioManager across scenes
+            DontDestroyOnLoad(gameObject);  // Ensure this persists across scenes
         }
         else
         {
-            Destroy(gameObject);  // Destroy the duplicate instance of the AudioManager
+            Destroy(gameObject);  // Destroy any duplicates
         }
     }
 
-    // Method to play 3D audio
+    // Method to play 3D audio at a given position
     public void Play3D(AudioClip clip, Vector3 position)
     {
-        // Instantiate the audio object at the specified position
         GameObject audioGameObject = Instantiate(AudioPrefab, position, Quaternion.identity);
-        AudioSource source = audioGameObject.GetComponent<AudioSource>();
+        AudioSource audioSource = audioGameObject.GetComponent<AudioSource>();
+        audioSource.clip = clip;
+        audioSource.Play();
 
-        source.clip = clip;
-        source.Play();
-
-        Destroy(audioGameObject, clip.length);
-        
+        Destroy(audioGameObject, clip.length);  // Destroy the audio game object after the clip finishes playing
     }
 }
+
+
 

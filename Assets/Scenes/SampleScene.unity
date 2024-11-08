@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 33296494}
   - component: {fileID: 33296493}
   - component: {fileID: 33296492}
-  - component: {fileID: 33296491}
+  - component: {fileID: 33296496}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Player
@@ -295,18 +295,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &33296491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 33296490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc2e52de451d0db4a947c8200c217037, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &33296492
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -392,6 +380,23 @@ Transform:
   - {fileID: 73555502}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &33296496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33296490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 931e567eaad64b04cb4002abe8ea725e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 0.75
+  bulletPrefab: {fileID: 0}
+  bulletFiringEffect: {fileID: 0}
+  bulletPosition: {fileID: 0}
+  playerShootingAudio: {fileID: 0}
 --- !u!1001 &38392612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9688,6 +9693,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4109027472145070, guid: 4dcb45769932d8b449fc6523626179be, type: 3}
   m_PrefabInstance: {fileID: 1690374368}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1721661170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1721661171}
+  m_Layer: 0
+  m_Name: B
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1721661171
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721661170}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.0055639, y: 0.59887815, z: 4.305103}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1725351104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10403,8 +10439,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a19e4fbabfa4f42ae08b4ea592f377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 20
-  firerate: 0.75
+  movementSpeed: 5
+  fireRate: 0.75
   bulletPrefab: {fileID: 3464968181367303777, guid: f54d0ef9ba358af47abd105341e285ec, type: 3}
   bulletFiringEffect: {fileID: 1000011513120438, guid: f70d27f5cf28c8941bbfd6febd74797f, type: 3}
   bulletPosition: {fileID: 413672066}
@@ -11118,6 +11154,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1928174724}
     m_Modifications:
     - target: {fileID: 184049068700969363, guid: f54d0ef9ba358af47abd105341e285ec, type: 3}
+      propertyPath: bulletSpeed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 184049068700969363, guid: f54d0ef9ba358af47abd105341e285ec, type: 3}
       propertyPath: BulletHitAudio
       value: 
       objectReference: {fileID: 8300000, guid: 55c030d3c6b3b674e9bdd7449446236c, type: 3}
@@ -11667,3 +11707,4 @@ SceneRoots:
   - {fileID: 1411786634}
   - {fileID: 965660809}
   - {fileID: 33296495}
+  - {fileID: 1721661171}

@@ -1,48 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 
 public class VFXManager : MonoBehaviour
 {
-    public static VFXManager instance;
-    
+    public static VFXManager Instance;
+
     private void Awake()
     {
-        if (instance == null)
-            instance = this;
+        if (Instance == null)
+            Instance = this;
         else
-            Destroy(this);
+            Destroy(gameObject);
     }
 
     public void PlayVFX(GameObject effectObject, Vector3 effectPosition)
     {
-        GameObject vfxObject = Instantiate(effectObject , effectPosition, Quaternion.identity);
+        GameObject vfxObject = Instantiate(effectObject, effectPosition, Quaternion.identity);
 
         ParticleSystem[] particleSystems = vfxObject.GetComponentsInChildren<ParticleSystem>();
 
-        float MaxLength = 0f;
+        float maxLength = 0f;
         foreach (ParticleSystem individualParticleSystem in particleSystems)
         {
             float currentKnownMaxLength = individualParticleSystem.main.duration
-                + individualParticleSystem.main.startLifetime.constantMax;
+                                          + individualParticleSystem.main.startLifetime.constantMax;
 
-            if (currentKnownMaxLength > MaxLength)
-                MaxLength = currentKnownMaxLength;
+            if (currentKnownMaxLength > maxLength)
+                maxLength = currentKnownMaxLength;
         }
 
-        Destroy(vfxObject, MaxLength);
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Destroy(vfxObject, maxLength);
     }
 }
+
