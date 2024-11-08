@@ -87,8 +87,41 @@ public class MultiPlayerLobby : MonoBehaviourPunCallbacks
     public override void OnCreatedRoom()
     {
         Debug.Log("Room has been created!");
+    }
+
+    public ovveride void OnCreateRoomFailed(short returnCode, string message)
+    {
+        Debug.Log("Failed to create room!");
+    }
+
+    public ovveride void OnJoinedRoom()
+    {
+        Debug.Log("Room has been joined!");
+        ActivatePanel("InsideRoom");
+    }
+
+    public void CreateARoom()
+    {
+        RoommOptions roomOptions = new RoommOptions();
+        roomOptions.MaxPlayers = 4;
+        roomOptions.IsVisible = true;
+
+        PhotonNetwork.CreateRoom(roomNameInput.text, roomOptions);
 
     }
+
+    public void LeaveRoom()
+    {
+        PhotonNetwork.LeaveRoom();
+    }
+
+    public override void OnLeftRoom()
+    {
+        Debug.Log("Room has been joined!");
+        ActivatePanel("CreateRomm");
+
+    }
+
 }
 
 
