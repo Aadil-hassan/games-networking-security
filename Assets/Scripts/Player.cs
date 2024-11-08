@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class Player : MonoBehaviour
     public Transform bulletPosition;
     private float nextFireTime;
 
+    [HideInInspector]
+    public int health = 100;
+    public Slider healthBar;
+
     public AudioClip playerShootingAudio;
 
     // Initialize components
@@ -22,6 +27,12 @@ public class Player : MonoBehaviour
         if (rigidBody == null)
         {
             Debug.LogError("Rigidbody component missing on Player!");
+        }
+
+        if (healthBar != null)
+        {
+            healthBar.maxValue = health;
+            healthBar.value = health;
         }
     }
 
@@ -38,6 +49,44 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         Move();
+    }
+
+    // Handle collisions with bullets and decrease health
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            BulletController bullet = collision.gameObject.GetComponent<BulletController>();
+
+            if (bullet != null)
+            {
+                // Call the TakeDamage method to decrease health
+                TakeDamage(bullet.damage);
+            }
+        }
+    }
+
+    // Method to handle player taking damage
+    void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (healthBar != null)
+        {
+            healthBar.value = health; // Update the health bar slider
+        }
+
+        if (health <= 0)
+        {
+            Die(); // Handle death logic if health reaches 0
+        }
+    }
+
+    // Method to handle player death
+    void Die()
+    {
+        // Handle death, e.g., play death animation, destroy the player, etc.
+        Debug.Log("Player has died.");
+        Destroy(gameObject); // Destroy the player game object
     }
 
     // Movement logic
@@ -76,11 +125,38 @@ public class Player : MonoBehaviour
             // Instantiate bullet at the defined position with no rotation
             GameObject bullet = Instantiate(bulletPrefab, bulletPosition.position, Quaternion.identity);
 
-            bullet.GetComponent<BulletController>()?.InitializeBullet(transform.rotation * Vector3.forward);
-            AudioManager.Instance.Play3D(playerShootingAudio, transform.position);
+            BulletController bulletController = bullet.GetComponent<BulletController>();
+            if (bulletController != null)
+            {
+                bulletController.InitializeBullet(transform.rotation * Vector3.forward);
+            }
+            else
+            {
+                Debug.LogError("BulletController component missing on the bullet prefab.");
+            }
 
-            VFXManager.Instance.PlayVFX(bulletFiringEffect, bulletPosition.position);
+            // Play shooting audio
+            if (AudioManager.Instance != null && playerShootingAudio != null)
+            {
+                AudioManager.Instance.Play3D(playerShootingAudio, transform.position);
+            }
+            else
+            {
+                Debug.LogWarning("AudioManager instance or playerShootingAudio is missing.");
+            }
+
+            // Play firing visual effect
+            if (VFXManager.Instance != null && bulletFiringEffect != null)
+            {
+                VFXManager.Instance.PlayVFX(bulletFiringEffect, bulletPosition.position);
+            }
+            else
+            {
+                Debug.LogWarning("VFXManager instance or bulletFiringEffect is missing.");
+            }
         }
     }
 }
+
+
 

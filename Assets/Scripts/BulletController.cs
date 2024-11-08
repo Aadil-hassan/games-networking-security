@@ -8,6 +8,7 @@ public class BulletController : MonoBehaviour
     public float bulletSpeed = 15f;
     public GameObject bulletImpactEffect;
     public AudioClip bulletHitAudio;  // Bullet hit audio
+    public int damage = 10;
 
     public void InitializeBullet(Vector3 originalDirection)
     {

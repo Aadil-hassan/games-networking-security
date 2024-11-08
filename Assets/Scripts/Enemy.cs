@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,15 +12,60 @@ public class Enemy : MonoBehaviour
     private float nextFire;
     public AudioClip playerShootingAudio;
 
-    private void OnTriggerEnter(Collider other)
+    [HideInInspector]
+    public int health = 100;
+    public Slider healthBar;
+
+    // This triggers when a collider stays within the trigger zone of the enemy
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player")) // Using CompareTag for better performance
         {
-            transform.LookAt(other.transform);
-            Fire();
+            transform.LookAt(other.transform); // Rotate enemy towards player
+            Fire(); // Call Fire method when player is detected
         }
     }
 
+    // This triggers when a collision stays active
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            // Corrected the typo
+            BulletController bullet = collision.gameObject.GetComponent<BulletController>();
+
+            if (bullet != null)
+            {
+                // Call the TakeDamage method to decrease health
+                TakeDamage(bullet.damage);
+            }
+        }
+    }
+
+    // Method to handle enemy taking damage
+    void TakeDamage(int damage)
+    {
+        health -= damage;
+        // Optionally update the health bar here
+        if (healthBar != null)
+        {
+            healthBar.value = health; // Update the health bar slider
+        }
+
+        if (health <= 0)
+        {
+            Die(); // Handle death logic if health reaches 0
+        }
+    }
+
+    // Method to handle enemy death
+    void Die()
+    {
+        // Handle death, e.g., play death animation, destroy the enemy, etc.
+        Destroy(gameObject); // Destroy the enemy game object
+    }
+
+    // Method to handle firing bullets
     void Fire()
     {
         if (Time.time > nextFire)
@@ -35,6 +81,10 @@ public class Enemy : MonoBehaviour
                 if (bulletController != null)
                 {
                     bulletController.InitializeBullet(transform.rotation * Vector3.forward);
+                }
+                else
+                {
+                    Debug.LogWarning("BulletController component is missing on the bullet prefab.");
                 }
             }
             else
@@ -64,6 +114,7 @@ public class Enemy : MonoBehaviour
         }
     }
 }
+
 
 
 
