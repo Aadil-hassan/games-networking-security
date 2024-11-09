@@ -13,20 +13,53 @@ public class MultiPlayerLobby : MonoBehaviourPunCallbacks
     public Transform CreateRoomPanel;
     public Transform InsideRoomPanel;
     public Transform ListRoomsPanel;
+    public GameObject textPrefab;
+    public Transform insideRoomPlayerList;
 
     // Input field for room name
     public InputField roomNameInput;
+    public InputField playerNameInput;
+
+    private string playerName;
+
+    private void Start()
+    {
+        playerName = string.Format("Player {0}", Random.Range(1, 1000000));
+        if (playerNameInput != null)
+        {
+            playerNameInput.text = playerName;
+        }
+    }
+
+    // Called when the login button is clicked
+    public void LoginButtonClicked()
+    {
+        if (playerNameInput != null && !string.IsNullOrEmpty(playerNameInput.text))
+        {
+            playerName = playerNameInput.text;
+        }
+
+        PhotonNetwork.LocalPlayer.NickName = playerName;
+        PhotonNetwork.ConnectUsingSettings(); // Connects to Photon servers using the predefined settings
+    }
 
     // Method to create a new room
     public void CreateARoom()
     {
-        // Define room options with max players and visibility settings
-        RoomOptions roomOptions = new RoomOptions();
-        roomOptions.MaxPlayers = 4;
-        roomOptions.IsVisible = true;
+        if (roomNameInput != null && !string.IsNullOrEmpty(roomNameInput.text))
+        {
+            // Define room options with max players and visibility settings
+            RoomOptions roomOptions = new RoomOptions();
+            roomOptions.MaxPlayers = 4;
+            roomOptions.IsVisible = true;
 
-        // Create room using the name entered in the input field
-        PhotonNetwork.CreateRoom(roomNameInput.text, roomOptions);
+            // Create room using the name entered in the input field
+            PhotonNetwork.CreateRoom(roomNameInput.text, roomOptions);
+        }
+        else
+        {
+            Debug.LogWarning("Room name input field is empty or not assigned.");
+        }
     }
 
     // Method to activate a specified panel while hiding others
@@ -50,12 +83,6 @@ public class MultiPlayerLobby : MonoBehaviourPunCallbacks
             InsideRoomPanel.gameObject.SetActive(true);
         else if (panelName == ListRoomsPanel.gameObject.name)
             ListRoomsPanel.gameObject.SetActive(true);
-    }
-
-    // Method called when the login button is clicked, initiating the connection
-    public void LoginButtonClicked()
-    {
-        PhotonNetwork.ConnectUsingSettings();  // Connects to Photon servers using the predefined settings
     }
 
     // Called automatically when connected to the master server
@@ -89,25 +116,28 @@ public class MultiPlayerLobby : MonoBehaviourPunCallbacks
         Debug.Log("Room has been created!");
     }
 
-    public ovveride void OnCreateRoomFailed(short returnCode, string message)
+    public override void OnCreateRoomFailed(short returnCode, string message)
     {
-        Debug.Log("Failed to create room!");
+        Debug.Log("Failed to create room: " + message);
     }
 
-    public ovveride void OnJoinedRoom()
+    public override void OnJoinedRoom()
     {
         Debug.Log("Room has been joined!");
-        ActivatePanel("InsideRoom");
-    }
+        ActivatePanel(InsideRoomPanel.gameObject.name); // Activate InsideRoom panel
 
-    public void CreateARoom()
-    {
-        RoommOptions roomOptions = new RoommOptions();
-        roomOptions.MaxPlayers = 4;
-        roomOptions.IsVisible = true;
+        // Clear the existing player list UI
+        foreach (Transform child in insideRoomPlayerList)
+        {
+            Destroy(child.gameObject);
+        }
 
-        PhotonNetwork.CreateRoom(roomNameInput.text, roomOptions);
-
+        // Populate the player list UI with current players in the room
+        foreach (var player in PhotonNetwork.PlayerList)
+        {
+            var playerListEntry = Instantiate(textPrefab, insideRoomPlayerList);
+            playerListEntry.GetComponent<Text>().text = player.NickName;
+        }
     }
 
     public void LeaveRoom()
@@ -117,12 +147,13 @@ public class MultiPlayerLobby : MonoBehaviourPunCallbacks
 
     public override void OnLeftRoom()
     {
-        Debug.Log("Room has been joined!");
-        ActivatePanel("CreateRomm");
-
+        Debug.Log("Left the room!");
+        ActivatePanel(CreateRoomPanel.gameObject.name); // Activate CreateRoom panel
     }
-
 }
+
+
+
 
 
 

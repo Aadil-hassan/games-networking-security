@@ -2440,28 +2440,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4281780448642680, guid: 0f9577b4dda6cc546abea4737be5a392, type: 3}
   m_PrefabInstance: {fileID: 364194020}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &364993252 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6812360275661751426, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
-  m_PrefabInstance: {fileID: 1078888561}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &364993255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 364993252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2204896b46b2bee48b098810ebbf6ac9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LoginPanel: {fileID: 0}
-  SelectionPanel: {fileID: 0}
-  CreateRoomPanel: {fileID: 0}
-  InsideRoomPanel: {fileID: 0}
-  ListRoomsPanel: {fileID: 0}
 --- !u!1 &385920334
 GameObject:
   m_ObjectHideFlags: 0
@@ -5728,11 +5706,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2204896b46b2bee48b098810ebbf6ac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoginPanel: {fileID: 0}
-  SelectionPanel: {fileID: 0}
-  CreateRoomPanel: {fileID: 0}
-  InsideRoomPanel: {fileID: 0}
-  ListRoomsPanel: {fileID: 0}
+  LoginPanel: {fileID: 1078888568}
+  SelectionPanel: {fileID: 1078888567}
+  CreateRoomPanel: {fileID: 1078888564}
+  InsideRoomPanel: {fileID: 1078888563}
+  ListRoomsPanel: {fileID: 1078888562}
+  textPrefab: {fileID: 0}
+  insideRoomPlayerList: {fileID: 0}
+  roomNameInput: {fileID: 0}
+  playerNameInput: {fileID: 0}
 --- !u!1001 &831783895
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6996,6 +6978,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6812360275014123177, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6812360275014123177, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 822855404}
+    - target: {fileID: 6812360275014123177, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ActivatePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6812360275014123177, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MultiPlayerLobby, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6812360275051167502, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -7011,6 +7009,46 @@ PrefabInstance:
     - target: {fileID: 6812360275051167502, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6812360275173874635, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 822855403}
+    - target: {fileID: 6812360275268344927, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 822855404}
+    - target: {fileID: 6812360275268344927, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ActivatePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6812360275268344927, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MultiPlayerLobby, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6812360275855606238, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 822855404}
+    - target: {fileID: 6812360275855606238, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CreateARoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 6812360275855606238, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MultiPlayerLobby, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6812360276152990339, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 822855404}
+    - target: {fileID: 6812360276152990339, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LeaveRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 6812360276152990339, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MultiPlayerLobby, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6812360276434947485, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -7131,10 +7169,75 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6812360276549421480, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
       insertIndex: -1
       addedObject: {fileID: 822855404}
-    - targetCorrespondingSourceObject: {fileID: 6812360275661751426, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 6812360276286466844, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 364993255}
+      addedObject: {fileID: 1078888569}
+    - targetCorrespondingSourceObject: {fileID: 6812360276021687920, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1185092829}
   m_SourcePrefab: {fileID: 100100000, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+--- !u!224 &1078888562 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6812360275954169340, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+  m_PrefabInstance: {fileID: 1078888561}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1078888563 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6812360276169851820, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+  m_PrefabInstance: {fileID: 1078888561}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1078888564 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6812360275905130701, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+  m_PrefabInstance: {fileID: 1078888561}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1078888565 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6812360276286466844, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+  m_PrefabInstance: {fileID: 1078888561}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1078888566 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6812360276286466818, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+  m_PrefabInstance: {fileID: 1078888561}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078888565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!224 &1078888567 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6812360274712863575, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+  m_PrefabInstance: {fileID: 1078888561}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1078888568 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6812360275661751425, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+  m_PrefabInstance: {fileID: 1078888561}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1078888569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078888565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2204896b46b2bee48b098810ebbf6ac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LoginPanel: {fileID: 1078888568}
+  SelectionPanel: {fileID: 1078888567}
+  CreateRoomPanel: {fileID: 1078888564}
+  InsideRoomPanel: {fileID: 1078888563}
+  ListRoomsPanel: {fileID: 1078888562}
+  textPrefab: {fileID: 0}
+  insideRoomPlayerList: {fileID: 0}
+  roomNameInput: {fileID: 1078888566}
+  playerNameInput: {fileID: 1078888566}
 --- !u!1001 &1090377686
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7683,6 +7786,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4856522368811236, guid: b2199aadf1bb8c4449f3edfc84a39f78, type: 3}
   m_PrefabInstance: {fileID: 1180476521}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1185092827 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6812360276021687920, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+  m_PrefabInstance: {fileID: 1078888561}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1185092828 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6812360276021687927, guid: 63eeed59a09b7964188723bc31f849ad, type: 3}
+  m_PrefabInstance: {fileID: 1078888561}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1185092829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185092827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2204896b46b2bee48b098810ebbf6ac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LoginPanel: {fileID: 1078888568}
+  SelectionPanel: {fileID: 1078888567}
+  CreateRoomPanel: {fileID: 1078888564}
+  InsideRoomPanel: {fileID: 1078888563}
+  ListRoomsPanel: {fileID: 1078888562}
+  textPrefab: {fileID: 1018624826732777478, guid: 5e271fb8f965bde47896a4752438cb50, type: 3}
+  insideRoomPlayerList: {fileID: 1185092828}
+  roomNameInput: {fileID: 1078888566}
+  playerNameInput: {fileID: 1078888566}
 --- !u!1001 &1185712081
 PrefabInstance:
   m_ObjectHideFlags: 0
