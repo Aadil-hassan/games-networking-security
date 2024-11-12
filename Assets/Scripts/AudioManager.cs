@@ -13,7 +13,7 @@ public class AudioManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);  // Ensure this persists across scenes
+            //DontDestroyOnLoad(gameObject);  // Ensure this persists across scenes
         }
         else
         {
